@@ -1,0 +1,24 @@
+{
+  "name": "next.js",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "@hcaptcha/react-hcaptcha": "^0.3.7",
+    "lightfetch-node": "^1.0.0",
+    "next": "11.1.2",
+    "next-iron-session": "^4.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "replit-login": "^1.0.3",
+    "sass": "^1.42.1",
+    "swr": "^1.0.1"
+  }
+}

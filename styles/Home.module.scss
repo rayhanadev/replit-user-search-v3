@@ -1,0 +1,118 @@
+.container {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+
+	.searchBar {
+		background-color: #1C2333;
+		margin: auto;
+		margin-top: 10rem;
+		width: 77rem;
+		height: 8rem;
+
+		border: none;
+		border-radius: 1rem;
+
+		padding-left: 3.5rem;
+
+		.chevron {
+			font-size: 3.2rem;
+			color: #0099FF;
+		}
+
+		.searchInput {
+			background-color: #1C2333;
+			width: 70rem;
+			height: 7.5rem;
+
+			border: none;
+			border-radius: 1rem;
+
+			padding-left: 3.5rem;
+			color: #FFFFFF;
+			font-size: 3.2rem;
+			font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+				'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+				'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+			&::placeholder {
+				color: #9DA2A6;
+			}
+
+			&:focus, &:active {
+        outline: none;
+				border-color: transparent;
+			}
+		}
+	}
+	.card {
+		text-decoration: none;
+		position: relative;
+		display: inline;
+		background-color: #1C2333;
+		width: 77rem;
+		height: 29.5rem;
+
+		border: none;
+		border-radius: 1rem;
+
+		margin-top: 2.5rem;
+		margin-bottom: 1.5rem;
+
+		.header {
+			margin-top: 2.7rem;
+			margin-left: 5.3rem;
+			width: 60rem;
+			height: 11rem;
+
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-content: space-around;
+
+			.img {
+				width: 11rem;
+				height: 11rem;
+				position: relative;
+				border-radius: 50%;
+			}
+
+			.name {
+				margin: {
+					top: 1.5rem;
+					bottom: 0;	
+				};
+				margin-left: 1.5rem;
+				color: #FFFFFF;
+				font-size: 3.6rem;
+			}
+
+			.info {
+				margin: {
+					top: 0;	
+					bottom: 1.5rem;
+				};
+				margin-left: 1.5rem;
+				color: #9DA2A6;
+				font-size: 2.4rem;
+			}
+		}
+
+		.desc {
+			color: #FFFFFF;
+			font-size: 2.4rem;
+			width: 58rem;
+			margin: auto;
+			margin-top: 2rem;
+		}
+	}
+}
+
+.flexBreak {
+	flex-basis: 100%;
+	height: 0;
+}
