@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/router';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import Head from '../components/Head/Head.js';
@@ -14,8 +15,10 @@ export default function Login() {
 		redirectIfFound: true,
 	});
 
+	const router = useRouter();
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [sid, setSid] = useState('');
 	const [token, setToken] = useState('');
 	const [btnText, setBtnText] = useState('Log in');
 	const captchaRef = useRef(null);
@@ -41,6 +44,8 @@ export default function Login() {
 				captcha: token,
 			}
 
+			if(sid && sid.length > 0) body.sid = sid;
+
 			try {
 				const data = await fetcher('/api/login', {
 					method: 'POST',
@@ -56,26 +61,43 @@ export default function Login() {
     }
   }, [token, username, password]);
 
+	console.log(router.query)
 	return (
 		<Layout>
 			<Head title="Login" />
 			<div className={styles.loginForm}>
 				<h1>Login to Replit</h1>
 				<div className={styles.formBody}>
-					<input
-						type="text"
-						value={username}
-						placeholder="Username"
-						onChange={(event) => setUsername(event.target.value)}
-					/>
-					<div className={styles.flexBreak}></div>
-					<input
-						type="password"
-						value={password}
-						placeholder="Password"
-						onChange={(event) => setPassword(event.target.value)}
-					/>
-					<div className={styles.flexBreak}></div>
+					{
+						router.query.useSid === 'true' ? (
+							<React.Fragment>
+								<input
+									type="text"
+									value={sid}
+									placeholder="connect.sid"
+									onChange={(event) => setSid(event.target.value)}
+								/>
+								<div className={styles.flexBreak}></div>
+							</React.Fragment>
+						) : (
+							<React.Fragment>
+								<input
+									type="text"
+									value={username}
+									placeholder="Username"
+									onChange={(event) => setUsername(event.target.value)}
+								/>
+								<div className={styles.flexBreak}></div>
+								<input
+									type="password"
+									value={password}
+									placeholder="Password"
+									onChange={(event) => setPassword(event.target.value)}
+								/>
+								<div className={styles.flexBreak}></div>
+							</React.Fragment>
+						)
+					}
 					<button onClick={onSubmit}><strong>{btnText}</strong></button>
 				</div>
 				<HCaptcha

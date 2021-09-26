@@ -32,7 +32,7 @@ export default withSession(async (req, res) => {
 		} else {
 			res.status(200).send(JSON.stringify({
 				status: 200,
-				data: data.usernameSearch,
+				data: data?.usernameSearch || null,
 			}));
 		}
 	} catch (error) {

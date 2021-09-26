@@ -3,15 +3,15 @@ import { lightfetch } from 'lightfetch-node';
 import withSession from '../../libs/session.js';
 
 export default withSession(async (req, res) => {
-	const { username, password, captcha } = await req.body;
+	const { username, password, sid, captcha } = await req.body;
 
 	const body = {
 		query: '{ currentUser { username fullName image karma bio } }',
 	};
 
 	try {
-		if (username && password && captcha) {
-			const auth = await authenticate(username, password, captcha);
+		if (username && password && captcha || sid) {
+			const auth = sid ? sid : await authenticate(username, password, captcha);
 
 			if (typeof auth === 'string') {
 				const { data: { currentUser: { username, fullName, image, karma, bio } } } = await lightfetch(`https://replit.com/graphql`, {
